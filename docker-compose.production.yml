@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  jackett:
+    restart: always
+  plex:
+    restart: always
+  sonarr:
+    restart: always
+  transmission:
+    restart: always

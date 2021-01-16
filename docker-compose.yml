@@ -1,0 +1,98 @@
+version: "3"
+
+services:
+  plex:
+    image: ghcr.io/linuxserver/plex
+    container_name: plex
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - VERSION=docker
+      - PLEX_CLAIM= #optional, but required for first startup
+    volumes:
+      - ${CONFIG}/plex:/config
+      - ${DATA}/tv:/tv
+      - ${DATA}/movies:/movies
+    ports:
+      - 32400:32400
+    restart: unless-stopped
+
+  jackett:
+    image: ghcr.io/linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG}/jackett:/config
+      - ${DATA}/downloads/complete:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+  transmission:
+    image: ghcr.io/linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - USER=${USERNAME}
+      - PASS=${PASSWORD}
+    volumes:
+      - ${CONFIG}/transmission:/config
+      - ${DATA}/downloads/complete:/downloads
+      - ${DATA}/watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
+
+  sonarr:
+    image: ghcr.io/linuxserver/sonarr
+    container_name: sonarr
+    depends_on:
+      - jackett
+      - transmission
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG}/sonarr:/config
+      - ${DATA}/tv:/tv
+      - ${DATA}/downloads/complete:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  # configurator:
+  #   build:
+  #     context: ./configurator
+  #   container_name: configurator
+  #   depends_on:
+  #     - sonarr
+  #   environment:
+  #     HOST: sonarr
+  #     API_KEY: ${API_KEY}
+  #     USER: ${USERNAME}
+  #     PASS: ${PASSWORD}
+
+  # vpn:
+  #   container_name: vpn
+  #   image: dperson/openvpn-client:latest
+  #   cap_add:
+  #     - net_admin # required to modify network interfaces
+  #   restart: unless-stopped
+  #   volumes:
+  #     - /dev/net:/dev/net:z # tun device
+  #     - ${CONFIG}/vpn:/vpn # OpenVPN configuration
+  #   security_opt:
+  #     - label:disable
+  #   ports:
+  #     - 8112:8112 # deluge web UI
+  #     - 9117:9117 # jackett web UI
+  #     - 8989:8989 # sonarr web UI
+  #   command: '-f "" -r 192.168.1.0/24' # enable firewall and route local network traffic
