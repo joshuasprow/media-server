@@ -24,6 +24,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - UMASK_SET=022
     volumes:
       - ${CONFIG}/jackett:/config
       - ${DATA}/downloads/complete:/downloads
@@ -38,6 +39,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - UMASK_SET=022
       - USER=${USERNAME}
       - PASS=${PASSWORD}
     volumes:
@@ -60,6 +62,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - UMASK_SET=022
     volumes:
       - ${CONFIG}/radarr:/config
       - ${DATA}/movies:/movies
@@ -78,6 +81,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - UMASK_SET=022
     volumes:
       - ${CONFIG}/sonarr:/config
       - ${DATA}/tv:/tv
