@@ -42,12 +42,30 @@ services:
       - PASS=${PASSWORD}
     volumes:
       - ${CONFIG}/transmission:/config
-      - ${DATA}/downloads:/downloads
+      - ${DATA}/downloads:/downloads # creates complete and incomplete subdirs
       - ${DATA}/watch:/watch
     ports:
       - 9091:9091
       - 51413:51413
       - 51413:51413/udp
+    restart: unless-stopped
+
+  radarr:
+    image: ghcr.io/linuxserver/radarr
+    container_name: radarr
+    depends_on:
+      - jackett
+      - transmission
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG}/radarr:/config
+      - ${DATA}/movies:/movies
+      - ${DATA}/downloads/complete:/downloads
+    ports:
+      - 7878:7878
     restart: unless-stopped
 
   sonarr:

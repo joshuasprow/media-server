@@ -5,6 +5,8 @@ services:
     restart: always
   plex:
     restart: always
+  radarr:
+    restart: always
   sonarr:
     restart: always
   transmission:
