@@ -42,7 +42,7 @@ services:
       - PASS=${PASSWORD}
     volumes:
       - ${CONFIG}/transmission:/config
-      - ${DATA}/downloads:/downloads # creates complete and incomplete subdirs
+      - ${DATA}/downloads:/downloads
       - ${DATA}/watch:/watch
     ports:
       - 9091:9091
