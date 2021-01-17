@@ -90,6 +90,20 @@ services:
       - 8989:8989
     restart: unless-stopped
 
+  server:
+    build:
+      context: ./server
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022
+    volumes:
+      - ./server/static:/app/static
+    ports:
+      - 80:80
+    restart: unless-stopped
+
   # configurator:
   #   build:
   #     context: ./configurator
