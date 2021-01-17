@@ -1,6 +1,8 @@
 version: "3"
 
 services:
+  deluge:
+    restart: always
   jackett:
     restart: always
   plex:
@@ -9,5 +11,5 @@ services:
     restart: always
   sonarr:
     restart: always
-  transmission:
-    restart: always
+  # transmission:
+  #   restart: always
