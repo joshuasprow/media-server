@@ -44,6 +44,8 @@ services:
       - ${DATA}/downloads:/downloads
       - ./scripts/extract.sh:/scripts/extract.sh
     ports:
+      - 6881:6881 # incoming torrents
+      - 6882:6882 # outgoing torrents
       - 8112:8112
     restart: unless-stopped
 
