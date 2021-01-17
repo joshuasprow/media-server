@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -33,7 +34,18 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fileServer := http.FileServer(http.Dir("./static"))
+	staticDir := "./static"
+
+	flag.StringVar(
+		&staticDir,
+		"s",
+		staticDir,
+		"the directory that contains static web files",
+	)
+
+	flag.Parse()
+
+	fileServer := http.FileServer(http.Dir(staticDir))
 
 	http.Handle("/", fileServer)
 	http.HandleFunc("/form", formHandler)
