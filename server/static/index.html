@@ -5,41 +5,121 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Media Server</title>
-  <style>
-    body {
-      background: #ddd;
-      margin: 0;
-    }
-
-    main {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    section.box.content {
-      margin-top: 200px;
-      padding: 2rem;
-    }
-  </style>
   <link rel="stylesheet" href="bulma.min.css">
 </head>
 
 <body>
-  <main>
-    <section class="box content">
-      <h2>Nice Website... TBD</h2>
-      <ul>
-        <li><a href="http://192.168.1.245:9117/">Jackett</a></li>
-        <li><a href="http://192.168.1.245:32400/">Plex</a></li>
-        <li><a href="http://192.168.1.245:7878">Radarr</a></li>
-        <li><a href="http://192.168.1.245:8989">Sonarr</a></li>
-        <li><a href="http://192.168.1.245:9091">Transmission</a></li>
-      </ul>
-    </section>
-  </main>
+  <section class="hero is-primary is-fullheight">
+    <div class="hero-body" style="max-width: 800px; margin: 0 auto;">
+      <div class="container">
+        <article class="media box">
+          <figure class="media-left">
+            <a href="http://192.168.1.245:9117/">
+              <p class="image is-64x64">
+                <img src="jacket_logo.png">
+              </p>
+            </a>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><a href="http://192.168.1.245:9117/">Jackett</a></strong>
+                <br>
+                The indexer. This service checks torrent sites for the latest releases. It stores links to those
+                releases so that the PVR services know what to download.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="media box">
+          <figure class="media-left">
+            <a href="http://192.168.1.245:32400/">
+              <p class="image is-64x64" style="background-color: black; padding: 0 8px;">
+                <span style="
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-position: 50%; 
+                background-size: contain; 
+                background-repeat: no-repeat; 
+                background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzA4NiIgaGVpZ2h0PSIxMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxyYWRpYWxHcmFkaWVudCBjeD0iODkuMjY3JSIgY3k9IjQ5Ljc2JSIgZng9Ijg5LjI2NyUiIGZ5PSI0OS43NiUiIHI9IjkyLjUlIiBpZD0iYSI+PHN0b3Agc3RvcC1jb2xvcj0iI0Y5QkUwMyIgb2Zmc2V0PSIwJSIvPjxzdG9wIHN0b3AtY29sb3I9IiNDQzdDMTkiIG9mZnNldD0iMTAwJSIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTMwODUuOTkgMGgtMjkwbC0yOTAgNTAwIDI5MCA1MDBoMjg5Ljc0N0wyNzk1Ljk5IDUwMC4yNSAzMDg1Ljk5IDAiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMjE4NiAwaDI5MGwzMjAgNTAwLjI1LTMyMCA1MDAuMjVoLTI5MGwzMjAtNTAwLjI1TDIxODYgMCIgZmlsbD0idXJsKCNhKSIvPjxwYXRoIGQ9Ik0yMDg1Ljk0NyAxMDAwaC01NzcuMDczVjBoNTc3LjA3M3YxNzMuNzM3SDE3MjEuMzRWMzkzLjNoMzM5LjI1NHYxNzMuNzNIMTcyMS4zNHYyNTcuODY1aDM2NC42MDdWMTAwMG0tMTI5NC42NzEgMFYwaDIxMi4wNHY4MjQuODk1aDQwNS42MVYxMDAwaC02MTcuNjUiIGZpbGw9IiNGRkYiLz48ZyBmaWxsPSIjRkZGIj48cGF0aCBkPSJNNTg5Ljk0NyA1NTguODI0Yy02Ny4yNjggNTcuMDA3LTE2Mi45MSA4NS41LTI4Ni45MzggODUuNWgtOTAuOTdWMTAwMEgwVjQ3MC4zMzhsMjkwIC4zNmMxNzcuNTYzLTIuMDcgMTg2Ljg0Mi0xMTAuODIgMTg2Ljg0Mi0xNDguNDk4IDAtMzQuOTggMC0xNDYuNzU1LTE1Ny44NDItMTQ4LjVsLTMxOSAuMDAzVjBoMzE5LjQyNEM0NDAuNzE3IDAgNTMyLjk0IDI2LjEwNyA1OTYuMSA3OC4zMmM2My4xNTMgNTIuMjE0IDk0LjczNCAxMzAuMDcyIDk0LjczNCAyMzMuNTgyIDAgMTA3LjYyNS0zMy42MzIgMTg5LjkyOC0xMDAuODg3IDI0Ni45MjJ6Ii8+PHBhdGggZD0iTTAgMTEwaDIxMi4ydjQyOUgweiIvPjwvZz48L2c+PC9zdmc+);
+              "></span>
+              </p>
+            </a>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><a href="http://192.168.1.245:32400/">Plex</a></strong>
+                <br>
+                The media player. Use it to watch videos on your phone, a web browser, or Chromecast.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="media box">
+          <figure class="media-left">
+            <a href="http://192.168.1.245:7878">
+              <p class="image is-64x64">
+                <img src="radarr_logo.png">
+              </p>
+            </a>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><a href="http://192.168.1.245:7878">Radarr</a></strong>
+                <br>
+                The movie PVR. Tag movies for download and Radarr will handle downloading them and
+                letting Plex know that they're available.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="media box">
+          <figure class="media-left">
+            <a href="http://192.168.1.245:8989">
+              <p class="image is-64x64">
+                <img src="sonarr_logo.png">
+              </p>
+            </a>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><a href="http://192.168.1.245:8989">Sonarr</a></strong>
+                <br>
+                The TV PVR. Tag series for download and Sonarr will keep track of upcoming episodes. You can also
+                manually download past episodes and seasons.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="media box">
+          <figure class="media-left">
+            <a href="http://192.168.1.245:8112">
+              <p class="image is-64x64">
+                <img src="deluge_logo.png">
+              </p>
+            </a>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><a href="http://192.168.1.245:8112">Deluge</a></strong>
+                <br>
+                The download client. This service handles the business of downloading torrents.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 </body>
 
 </html>
