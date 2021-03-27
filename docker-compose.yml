@@ -2,13 +2,13 @@ version: "3"
 
 services:
   plex:
-    image: ghcr.io/linuxserver/plex
+    image: linuxserver/plex
     container_name: plex
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
-      - VERSION=docker
-      - PLEX_CLAIM= # required for first startup
+      - VERSION=public
+      # - PLEX_CLAIM= # required for first startup, get from https://www.plex.tv/claim/
     volumes:
       - ${CONFIG}/plex:/config
       - ${DATA}/tv:/tv
